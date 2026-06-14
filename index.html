@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RaiseReady — Investor-Ready Series A Pitch Decks, Built on a CFO's Experience</title>
+  <meta name="description" content="Share a few details about your company and receive a Series A pitch deck built around exactly what investors are looking for — guided by the experience of a seasoned CFO." />
+
+  <!-- ====== EDIT ME: Social / preview ====== -->
+  <meta property="og:title" content="RaiseReady — Investor-Ready Series A Pitch Decks" />
+  <meta property="og:description" content="Turn your company details into a Series A pitch deck investors actually want to see." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: Playfair Display (serif display, mirrors mencken-std) + Barlow (sans, mirrors urw-din) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       THEME TOKENS — taken from gulfsideadvisors.com
+       Edit these to recolor the whole site.
+       ========================================================= */
+    :root {
+      --navy:    #003865;   /* primary deep blue */
+      --navy-2:  #002a4d;   /* darker navy */
+      --cream:   #fffefa;   /* near-white background */
+      --ink:     #222222;   /* body text */
+      --accent:  #dfd1a7;   /* khaki / gold */
+      --accent-d:#c9b787;   /* deeper khaki for hovers */
+      --powder:  #bbdde6;   /* light blue band */
+      --powder-d:#a6cdd9;
+      --gray:    #6f7a85;   /* muted text */
+      --line:    #e6e1d4;   /* hairlines */
+
+      --maxw: 1140px;
+      --radius: 3px;
+      --shadow: 0 24px 60px rgba(0,56,101,.14);
+      --shadow-sm: 0 10px 30px rgba(0,56,101,.10);
+
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--ink);
+      background: var(--cream); line-height: 1.65; font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; margin: 0 0 .4em; color: var(--navy); }
+    h1 { font-size: clamp(2.5rem, 5.2vw, 4.2rem); font-style: italic; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); font-style: italic; }
+    h3 { font-size: 1.4rem; }
+    p  { margin: 0 0 1rem; }
+    a  { color: inherit; text-decoration: none; }
+
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+    .narrow { max-width: 760px; }
+
+    .eyebrow {
+      display: inline-block; font-family: var(--sans); font-weight: 600;
+      font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 20px;
+    }
+    .accent-rule { width: 54px; height: 3px; background: var(--accent); border: 0; margin: 0 0 26px; }
+    .center .accent-rule { margin-left: auto; margin-right: auto; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      font-family: var(--sans); font-weight: 600; font-size: .92rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 15px 30px; border-radius: var(--radius); border: 1.5px solid transparent;
+      cursor: pointer; transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--navy-2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .btn-accent { background: var(--accent); color: var(--navy); }
+    .btn-accent:hover { background: var(--accent-d); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+    .btn-outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+    .btn-outline-light:hover { background: #fff; color: var(--navy); }
+
+    /* ---------- Header ---------- */
+    header.site {
+      position: sticky; top: 0; z-index: 50; background: rgba(255,254,250,.95);
+      backdrop-filter: saturate(140%) blur(8px); border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 1.5rem; color: var(--navy); letter-spacing: .01em; }
+    .brand .mark { width: 12px; height: 12px; background: var(--accent); display: inline-block; transform: rotate(45deg); }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { color: var(--navy); font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links a.plain:hover { color: var(--accent-d); }
+    .nav-cta { padding: 11px 24px; font-size: .78rem; }
+
+    /* ---------- Hero ---------- */
+    .hero { background: var(--powder); position: relative; overflow: hidden; }
+    .hero-inner { padding: 104px 0 110px; max-width: 820px; }
+    .hero h1 { margin-bottom: 24px; }
+    .hero p.lead { font-size: 1.28rem; color: #1d3a52; max-width: 640px; margin-bottom: 36px; line-height: 1.6; }
+
+    /* Email form */
+    .signup { display: flex; gap: 12px; flex-wrap: wrap; max-width: 540px; }
+    .signup input[type="email"] {
+      flex: 1 1 250px; min-width: 0; padding: 16px 18px; border-radius: var(--radius);
+      border: 1.5px solid rgba(0,56,101,.25); background: rgba(255,255,255,.85);
+      color: var(--navy); font-size: 1rem; font-family: var(--sans);
+    }
+    .signup input::placeholder { color: #5f7585; }
+    .signup input:focus { outline: none; border-color: var(--navy); background: #fff; }
+    .form-note { font-size: .85rem; color: #496073; margin-top: 16px; }
+    .form-msg { margin-top: 14px; font-weight: 600; font-size: .95rem; min-height: 1.2em; }
+    .form-msg.success { color: #0a6b3d; }
+    .form-msg.error { color: #b3261e; }
+
+    .hero-badges { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 50px; color: #1d3a52; font-size: .92rem; font-weight: 500; }
+    .hero-badges span { display: inline-flex; align-items: center; gap: 9px; }
+    .check { color: var(--navy); font-weight: 700; }
+
+    /* ---------- Sections / bands ---------- */
+    section { padding: 104px 0; }
+    .band-cream  { background: var(--cream); }
+    .band-white  { background: #fff; }
+    .band-powder { background: var(--powder); }
+    .band-accent { background: var(--accent); }
+    .band-navy   { background: var(--navy); color: #fff; }
+    .band-navy h1, .band-navy h2, .band-navy h3 { color: #fff; }
+
+    .section-head { max-width: 720px; margin-bottom: 60px; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-head p { color: var(--gray); font-size: 1.12rem; }
+    .band-navy .section-head p { color: rgba(255,255,255,.78); }
+
+    /* Intro statement band */
+    .statement { text-align: center; max-width: 860px; margin: 0 auto; }
+    .statement h2 { margin-bottom: 28px; }
+    .statement h2 em { font-style: italic; color: var(--accent-d); }
+    .statement p { font-size: 1.18rem; color: var(--gray); }
+
+    /* ---------- Process steps ---------- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 38px; }
+    .step { position: relative; }
+    .step .num { font-family: var(--serif); font-style: italic; font-size: 2.6rem; color: var(--accent-d); line-height: 1; margin-bottom: 14px; }
+    .step h3 { margin-bottom: 10px; }
+    .step p { color: var(--gray); margin: 0; font-size: 1rem; }
+    .band-navy .step p { color: rgba(255,255,255,.78); }
+    .band-navy .step .num { color: var(--accent); }
+
+    /* ---------- Focus / features list ---------- */
+    .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 60px; }
+    .feature { padding: 30px 0; border-top: 1px solid var(--line); }
+    .feature:nth-child(1), .feature:nth-child(2) { border-top: 0; }
+    .feature .k { font-family: var(--serif); font-style: italic; font-size: 1.35rem; color: var(--navy); margin-bottom: 6px; }
+    .feature p { color: var(--gray); margin: 0; font-size: 1rem; }
+    .band-powder .feature { border-color: rgba(0,56,101,.15); }
+
+    /* ---------- Expert / About ---------- */
+    .expert { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .expert-media {
+      background: var(--navy); color: #fff; border-radius: var(--radius);
+      padding: 48px 44px; box-shadow: var(--shadow);
+    }
+    .expert-media .avatar {
+      width: 92px; height: 92px; border-radius: 50%; background: var(--accent); color: var(--navy);
+      display: flex; align-items: center; justify-content: center; font-family: var(--serif);
+      font-style: italic; font-size: 2.1rem; font-weight: 600; margin-bottom: 24px;
+    }
+    .expert-media h3 { color: #fff; font-style: italic; }
+    .expert-media .role { color: var(--accent); font-weight: 600; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+    .expert-media p { color: rgba(255,255,255,.82); font-size: 1rem; }
+    .stats { display: flex; gap: 34px; margin-top: 30px; flex-wrap: wrap; }
+    .stat .n { font-family: var(--serif); font-style: italic; font-size: 2rem; color: var(--accent); }
+    .stat .l { font-size: .8rem; color: rgba(255,255,255,.7); letter-spacing: .06em; text-transform: uppercase; }
+    .expert-text h2 em { font-style: italic; color: var(--accent-d); }
+    .expert-text p { color: var(--gray); font-size: 1.1rem; }
+
+    /* ---------- Contact / waitlist (navy) ---------- */
+    .contact { text-align: center; }
+    .contact .signup { margin: 0 auto; justify-content: center; }
+    .contact .signup input[type="email"] { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); color: #fff; }
+    .contact .signup input::placeholder { color: rgba(255,255,255,.6); }
+    .contact .signup input:focus { background: rgba(255,255,255,.16); border-color: var(--accent); }
+    .contact p.lead { color: rgba(255,255,255,.82); font-size: 1.16rem; max-width: 580px; margin: 0 auto 34px; }
+    .contact .form-msg.success { color: var(--accent); }
+    .contact .form-msg.error { color: #ffb3ad; }
+
+    /* ---------- Footer ---------- */
+    footer.site { background: var(--navy-2); color: rgba(255,255,255,.6); padding: 44px 0; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .foot .brand { color: #fff; font-size: 1.25rem; }
+    .foot a { color: rgba(255,255,255,.6); font-size: .88rem; }
+    .foot a:hover { color: #fff; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 880px) {
+      .nav-links .plain { display: none; }
+      .steps { grid-template-columns: 1fr; gap: 30px; }
+      .features { grid-template-columns: 1fr; gap: 0; }
+      .feature:nth-child(2) { border-top: 1px solid var(--line); }
+      .expert { grid-template-columns: 1fr; gap: 36px; }
+      section { padding: 76px 0; }
+      body { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site">
+    <div class="container nav">
+      <a class="brand" href="#top"><span class="mark"></span>RaiseReady</a>
+      <nav class="nav-links">
+        <a class="plain" href="#process">Process</a>
+        <a class="plain" href="#focus">What investors want</a>
+        <a class="plain" href="#expert">The expertise</a>
+        <a class="btn btn-primary nav-cta" href="#waitlist">Join the waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <a id="top"></a>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow">Coming soon · Series A fundraising</span>
+      <h1>Turn your company details into a pitch deck investors actually want.</h1>
+      <p class="lead">
+        Answer a few questions about your business. We hand back a Series A pitch deck built around
+        exactly what investors look for — guided by the experience of a seasoned CFO who has helped
+        real companies raise real capital.
+      </p>
+
+      <!-- ====== EMAIL CAPTURE FORM (wires to Google Sheets — see README) ====== -->
+      <form class="signup" id="signup-form-hero" novalidate>
+        <input type="email" name="email" placeholder="you@yourcompany.com" required aria-label="Email address" />
+        <button type="submit" class="btn btn-primary">Get early access</button>
+      </form>
+      <div class="form-msg" id="msg-hero" role="status" aria-live="polite"></div>
+      <p class="form-note">Be first in line when we launch. No spam — just one note when it's ready.</p>
+
+      <div class="hero-badges">
+        <span><span class="check">✓</span> Investor-tested structure</span>
+        <span><span class="check">✓</span> Built on real CFO experience</span>
+        <span><span class="check">✓</span> Ready in a fraction of the time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATEMENT BAND ============ -->
+  <section class="band-cream">
+    <div class="container">
+      <div class="statement">
+        <h2>Simplify your <em>raise.</em> Amplify your <em>results.</em></h2>
+        <p>
+          Raising a Series A doesn't have to be a guessing game. We cut through the noise and help
+          founders put their most fundable story forward — combining a guided intake with the judgment
+          of someone who has sat across the table from investors.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process" class="band-white">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">The process</span>
+        <h2>Three steps from idea to investor-ready</h2>
+        <p>No blank page. No guessing what VCs want. Just a clear path to a deck that holds up in the room.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Tell us about your company</h3>
+          <p>Share the essentials through a guided intake — your traction, market, model, team, and the round you're targeting.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>We apply the CFO's playbook</h3>
+          <p>Your inputs run through a process modeled on a veteran CFO's experience — the same lens investors use to judge a Series A.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Get your investor-ready deck</h3>
+          <p>Receive a polished pitch deck structured around what funders expect to see — story, numbers, and narrative aligned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOCUS / WHAT INVESTORS WANT ============ -->
+  <section id="focus" class="band-powder">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What investors want</span>
+        <h2>Built around what actually gets funded</h2>
+        <p>Most decks fail for the same handful of reasons. We engineer yours to clear those bars from the first slide.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="k">The right story, in the right order</div>
+          <p>Problem, market, traction, and ask — sequenced the way investors read and decide.</p>
+        </div>
+        <div class="feature">
+          <div class="k">Numbers that survive scrutiny</div>
+          <p>Financials and metrics framed and stress-tested with a CFO's eye, not guesswork.</p>
+        </div>
+        <div class="feature">
+          <div class="k">Series A specific</div>
+          <p>Tuned to the bar for a Series A — not a generic template that fits no one well.</p>
+        </div>
+        <div class="feature">
+          <div class="k">A fraction of the time and cost</div>
+          <p>Expertise that normally takes months of advisory, delivered through a guided flow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERT / ABOUT ============ -->
+  <section id="expert" class="band-cream">
+    <div class="container expert">
+      <div class="expert-media">
+        <!-- EDIT ME: swap initials/name/role/stats for your CFO -->
+        <div class="avatar">CFO</div>
+        <h3>The brain behind it</h3>
+        <div class="role">Veteran CFO · Series A fundraising</div>
+        <p>
+          This isn't a generic AI template. The process is modeled on a CFO with deep, hands-on
+          experience helping companies raise capital — the judgment you'd normally pay a premium for,
+          built into every deck.
+        </p>
+        <div class="stats">
+          <div class="stat"><div class="n">$XXM+</div><div class="l">Capital raised</div></div>
+          <div class="stat"><div class="n">XX+</div><div class="l">Companies advised</div></div>
+          <div class="stat"><div class="n">XX yrs</div><div class="l">Experience</div></div>
+        </div>
+      </div>
+      <div class="expert-text">
+        <span class="eyebrow">The real edge</span>
+        <h2>You're not buying software. You're buying <em>experience.</em></h2>
+        <p>
+          The hard part of raising a Series A isn't making slides — it's knowing what to say, what to
+          prove, and what investors will push on. That knowledge is what our customers are really paying for.
+        </p>
+        <p>
+          We've encoded that expertise into a guided process so any founder can put their best, most
+          fundable version forward.
+        </p>
+        <a class="btn btn-outline" href="#waitlist">Join the waitlist</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / WAITLIST ============ -->
+  <section id="waitlist" class="band-navy contact">
+    <div class="container narrow">
+      <span class="eyebrow" style="color: var(--accent);">Be first in line</span>
+      <h2>Get on the list for early access</h2>
+      <p class="lead">We're launching soon. Drop your email and we'll let you know the moment you can build your investor-ready deck.</p>
+
+      <form class="signup" id="signup-form-cta" novalidate>
+        <input type="email" name="email" placeholder="you@yourcompany.com" required aria-label="Email address" />
+        <button type="submit" class="btn btn-accent">Notify me at launch</button>
+      </form>
+      <div class="form-msg" id="msg-cta" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site">
+    <div class="container foot">
+      <a class="brand" href="#top"><span class="mark"></span>RaiseReady</a>
+      <div>© <span id="year"></span> RaiseReady. All rights reserved.</div>
+      <div><a href="mailto:hello@raiseready.com">hello@raiseready.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* =========================================================
+       EMAIL CAPTURE → GOOGLE SHEETS
+       1. Follow README.md to deploy the Google Apps Script.
+       2. Paste your Web App URL between the quotes below.
+       ========================================================= */
+    const SHEETS_ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+    function wireForm(formId, msgId) {
+      const form = document.getElementById(formId);
+      const msg  = document.getElementById(msgId);
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const email = form.email.value.trim();
+        msg.className = 'form-msg';
+        msg.textContent = '';
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          msg.classList.add('error');
+          msg.textContent = 'Please enter a valid email address.';
+          return;
+        }
+
+        const btn = form.querySelector('button');
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        try {
+          if (SHEETS_ENDPOINT.startsWith('http')) {
+            const body = new URLSearchParams({ email: email, source: formId, page: location.href });
+            // no-cors: the request reaches Apps Script; response is opaque, so we assume success.
+            await fetch(SHEETS_ENDPOINT, { method: 'POST', mode: 'no-cors', body });
+          } else {
+            // Endpoint not configured yet — simulate success so the form is testable.
+            await new Promise(r => setTimeout(r, 500));
+            console.warn('SHEETS_ENDPOINT not set — email not stored:', email);
+          }
+          form.reset();
+          msg.classList.add('success');
+          msg.textContent = "You're on the list! We'll be in touch.";
+        } catch (err) {
+          msg.classList.add('error');
+          msg.textContent = 'Something went wrong. Please try again.';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = original;
+        }
+      });
+    }
+
+    wireForm('signup-form-hero', 'msg-hero');
+    wireForm('signup-form-cta', 'msg-cta');
+  </script>
+</body>
+</html>
