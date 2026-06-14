@@ -1,12 +1,19 @@
 /**
- * Series A Hub — Email capture → Google Sheets
+ * Series A Hub — Email capture → Google Sheets (+ email notification)
  * ------------------------------------------------------------
  * Paste this into a Google Apps Script bound to your Google Sheet,
  * deploy it as a Web App, and put the resulting URL into index.html
  * (the SHEETS_ENDPOINT constant). Full steps are in README.md.
  *
  * The web form sends: email, source, page  (plus a server timestamp).
+ *
+ * IMPORTANT: after changing this file you must publish a NEW VERSION
+ * (Deploy → Manage deployments → edit → New version) and re-authorize
+ * when prompted (the email feature needs the "send email" permission).
  */
+
+// Get an email here every time someone joins. Set to '' to turn off.
+var NOTIFY_EMAIL = 'brooks.fastsolutions@gmail.com';
 
 function doPost(e) {
   try {
@@ -25,6 +32,23 @@ function doPost(e) {
       p.source || '',
       p.page   || ''
     ]);
+
+    // Notify by email (failures here never block saving the lead).
+    if (NOTIFY_EMAIL) {
+      try {
+        MailApp.sendEmail({
+          to: NOTIFY_EMAIL,
+          subject: 'New Series A Hub waitlist signup: ' + (p.email || '(no email)'),
+          body: 'A new person joined the waitlist.\n\n'
+              + 'Email:  ' + (p.email  || '') + '\n'
+              + 'Source: ' + (p.source || '') + '\n'
+              + 'Page:   ' + (p.page   || '') + '\n'
+              + 'Time:   ' + new Date()
+        });
+      } catch (mailErr) {
+        // ignore — the lead is already safely in the sheet
+      }
+    }
 
     return ContentService
       .createTextOutput(JSON.stringify({ result: 'success' }))

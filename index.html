@@ -11,6 +11,9 @@
   <meta property="og:description" content="Turn your company details into a Series A pitch deck investors actually want to see." />
   <meta property="og:type" content="website" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
   <!-- Fonts: Space Grotesk (modern display) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -209,8 +212,31 @@
       .features { grid-template-columns: 1fr; gap: 0; }
       .feature:nth-child(2) { border-top: 1px solid var(--line); }
       .expert { grid-template-columns: 1fr; gap: 36px; }
-      section { padding: 76px 0; }
+      section { padding: 72px 0; }
       body { font-size: 16px; }
+      .hero-inner { padding: 56px 0 64px; }
+      .hero h1 { font-size: 2.5rem; margin-bottom: 18px; }
+      .hero p.lead { font-size: 1.12rem; margin-bottom: 28px; }
+      .hero-badges { margin-top: 36px; gap: 16px 26px; }
+      .section-head { margin-bottom: 44px; }
+    }
+
+    /* Phones */
+    @media (max-width: 560px) {
+      .nav { height: 64px; }
+      .nav-links a.nav-cta { padding: 10px 18px; }
+      .hero-inner { padding: 36px 0 48px; }
+      .hero h1 { font-size: 2.15rem; }
+      .hero p.lead { font-size: 1.05rem; }
+      .eyebrow { margin-bottom: 14px; }
+      section { padding: 56px 0; }
+      /* stack the email form so input + button are full width */
+      .signup { gap: 10px; }
+      .signup input[type="email"], .signup .btn { flex: 1 1 100%; width: 100%; }
+      .expert-media { padding: 32px 26px; }
+      .stats { gap: 22px 28px; }
+      .statement p, .section-head p { font-size: 1.02rem; }
+      .foot { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
   </style>
 </head>
