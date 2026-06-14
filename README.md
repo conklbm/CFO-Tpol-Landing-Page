@@ -1,4 +1,4 @@
-# RaiseReady — Landing Page
+# Series A Hub — Landing Page
 
 A single-file static landing page for an upcoming product that turns a company's
 intake details into an investor-ready **Series A pitch deck**, powered by the
@@ -35,7 +35,7 @@ deploy. No build command needed; publish directory is the repo root.
 
 The form posts signups to a Google Sheet via a small Apps Script web app.
 
-1. Create a new Google Sheet (e.g. "RaiseReady Leads").
+1. Create a new Google Sheet (e.g. "Series A Hub Leads").
 2. **Extensions → Apps Script**. Delete the starter code.
 3. Paste the contents of `google-apps-script.gs` and **Save**.
 4. **Deploy → New deployment → Web app.**
@@ -67,12 +67,12 @@ The form posts signups to a Google Sheet via a small Apps Script web app.
 
 Everything is editable in `index.html`. Common edits:
 
-- **Brand name:** replace `RaiseReady` (search/replace).
+- **Brand name:** replace `Series A Hub` (search/replace).
 - **Colors:** edit the `:root` CSS variables at the top of the `<style>` block.
 - **The CFO section:** update the initials, name, role, and the `$XXM+ / XX+ /
   XX yrs` stat placeholders (search for `EDIT ME`).
 - **Copy:** all headings and paragraphs are plain HTML — edit in place.
-- **Contact email:** replace `hello@raiseready.com` in the footer.
+- **Contact email:** replace `hello@seriesahub.com` in the footer.
 
 ---
 

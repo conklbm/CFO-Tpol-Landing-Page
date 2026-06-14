@@ -1,5 +1,5 @@
 /**
- * RaiseReady — Email capture → Google Sheets
+ * Series A Hub — Email capture → Google Sheets
  * ------------------------------------------------------------
  * Paste this into a Google Apps Script bound to your Google Sheet,
  * deploy it as a Web App, and put the resulting URL into index.html
@@ -39,6 +39,6 @@ function doPost(e) {
 // Optional: lets you open the Web App URL in a browser to confirm it's live.
 function doGet() {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: 'RaiseReady lead endpoint is running' }))
+    .createTextOutput(JSON.stringify({ status: 'Series A Hub lead endpoint is running' }))
     .setMimeType(ContentService.MimeType.JSON);
 }
