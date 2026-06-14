@@ -26,6 +26,14 @@ function doPost(e) {
     }
 
     var p = (e && e.parameter) ? e.parameter : {};
+
+    // Honeypot: if the hidden "company" field is filled, it's a bot — ignore it.
+    if (p.company) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ result: 'ignored' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     sheet.appendRow([
       new Date(),
       p.email  || '',
